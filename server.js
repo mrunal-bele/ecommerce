@@ -19,7 +19,6 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://mrunalBele:528491%40%
 })
 
 app.get("/", (req,res)=>{
-    window.open('www.kapdaa.netlify.com')
     res.send("server is up!")
 })
 
