@@ -1,9 +1,9 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { detailsOrder, payOrder } from '../actions/orderActions'
 import {PayPalButton} from 'react-paypal-button-v2'
+import Ecommerce from '../api/Ecommerce'
 
 const OrderScreen = (props) => {
     const {id} = useParams() 
@@ -15,7 +15,7 @@ const OrderScreen = (props) => {
     const dispatch = useDispatch();
     useEffect(()=>{
         const addPaypalScript = async () =>{
-            const {data} = await axios.get('/api/config/paypal')
+            const {data} = await Ecommerce.get('/api/config/paypal')
             const script = document.createElement('script')
             script.type = 'text/javascript'
             script.src = `https://www.paypal.com/sdk/js?client-id=${data}`

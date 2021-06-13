@@ -1,4 +1,5 @@
-import axios from "axios"
+
+import Ecommerce from "../api/Ecommerce"
 import { CART_EMPTY } from "../constants/cartConstants"
 import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, DETAIL_ORDER_REQUEST, DETAIL_ORDER_FAILURE, DETAIL_ORDER_SUCCESS, ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS, ORDER_PAY_FAILURE, ORDER_PAY_RESET, ORDER_LIST_REQUEST, ORDER_LIST_FAILURE, ORDER_LIST_SUCCESS } from "../constants/orderConstants"
 
@@ -6,7 +7,7 @@ export const createOrder = (order) => async (dispatch,getState) => {
     dispatch({type:CREATE_ORDER_REQUEST, payload: order})
     try {
         const {userSignin:{userInfo}} = getState()
-        const {data} = await axios.post('/api/orders',order,{
+        const {data} = await Ecommerce.post('/api/orders',order,{
             headers: {
                 authorization: `Bearer ${userInfo.token}`
             }
@@ -26,7 +27,7 @@ export const detailsOrder = (id) => async (dispatch,getState)=>{
     dispatch({type: DETAIL_ORDER_REQUEST, payload: id})
     try {
         const {userSignin:{userInfo}} = getState()
-        const {data} = await axios.get(`/api/orders/${id}`,{
+        const {data} = await Ecommerce.get(`/api/orders/${id}`,{
             headers: {
                 authorization: `Bearer ${userInfo.token}`
             }
@@ -47,7 +48,7 @@ export const payOrder = (order, paymentResult) => async (dispatch,getState)=>{
     })
     const {userSignin:{userInfo}} = getState()
     try {
-        const {data} = await axios.put(`/api/orders/${order._id}/pay`, paymentResult, {
+        const {data} = await Ecommerce.put(`/api/orders/${order._id}/pay`, paymentResult, {
             headers: {
                 authorization: `Bearer ${userInfo.token}`
             }
@@ -69,7 +70,7 @@ export const listOrder = () => async (dispatch, getState) => {
     dispatch({type : ORDER_LIST_REQUEST})
     const {userSignin:{userInfo}} = getState()
     try {
-        const {data} = await axios.get(`/api/orders/mine`,{
+        const {data} = await Ecommerce.get(`/api/orders/mine`,{
             headers: {
                 authorization: `Bearer ${userInfo.token}`
             }
