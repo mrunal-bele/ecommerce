@@ -19,7 +19,8 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://mrunalBele:528491%40%
 })
 
 app.get("/", (req,res)=>{
-    res.send("<a href='www.kapdaa.netlify.com'>Visit website</a>!")
+    window.open('www.kapdaa.netlify.com')
+    res.send("server is up!")
 })
 
 app.use('/api/users',userRouter)
