@@ -1,0 +1,4 @@
+export const ADD_CART_ITEM = "ADD_CART_ITEM"
+export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM"
+export const SHIPPING_ADDRESS = "SHIPPING_ADDRESS"
+export const CART_EMPTY = "CART_EMPTY"
