@@ -7,9 +7,10 @@ import orderRouter from "./routers/orderRouter.js"
 import path from 'path'
 import cors from 'cors'
 
-app.use(cors())
+
 dotenv.config()
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://mrunalBele:528491%40%23%24Aa@estore.5k2gt.mongodb.net/estore?retryWrites=true&w=majority',{
