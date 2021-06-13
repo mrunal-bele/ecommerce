@@ -10,7 +10,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/estore',{
+mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://mrunalBele:528491%40%23%24Aa@estore.5k2gt.mongodb.net/estore',{
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
