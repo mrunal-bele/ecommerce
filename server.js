@@ -12,6 +12,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://mrunalBele:528491%40%23%24Aa@estore.5k2gt.mongodb.net/estore?retryWrites=true&w=majority',{
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -30,6 +31,8 @@ app.get('/api/config/paypal', (req,res)=>{
 })
 
 app.use((err, req, res, next) => {
+    res.header("Access-Control-Allow-Origin","*")
+    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept")
     res.status(500).send({message: err.message})
 });
 
@@ -37,7 +40,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '/client/build/index.html')) 
 });
 
-app.use(cors())
+
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {
