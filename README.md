@@ -6,3 +6,6 @@ Backend hosted on heroku. Link - https://rocky-sierra-54572.herokuapp.com/
 
 
 App hosted on netlify - https://kapdaa.netlify.com
+
+
+Guest credentials for fake paypal payment - guestmail@gmail.com -> 12345678 
